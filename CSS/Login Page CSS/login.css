@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+body {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5)50%, rgba(0, 0, 0, 0.5)50%), url('./pexels-asad-photo-maldives-1450360.jpg');
+    background-size: cover; 
+}
+
 .icon {
     width: 200px;
     float: left;
@@ -391,8 +396,26 @@ input.hh {
     color: #3F71EA;
 }
 
-    
+.login-box{
+    width: 300px;
+    height: 420px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8)50%, rgba(0, 0, 0, 0.8)50%);
+    position: absolute;
+    top: -20px;
+    left: 870px;
+    transform: translate(0%, -5%);
+    border-radius: 10px;
+    padding: 25px;
+}
 
-        
-
+.login-box h2{
+    width: 220px;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 22px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 2px;
+    padding: 8p
+}
 
