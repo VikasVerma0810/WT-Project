@@ -141,15 +141,6 @@ ul li a:hover {
 
 }
 
-.content .cn a {
-    text-decoration: none;
-    color: #000;
-    transition: .3s ease;
-}
-
-.cn:hover {
-    background-color: #fff;
-}
 
 .content span {
     font-size: 65px
@@ -186,18 +177,20 @@ ul li a:hover {
     font-size: 18px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.4s ease;
     color: #fff;
-    transition: 0.4s ease;
 }
 
-.btnn:hover {
+.btnn a:hover {
     background: #fff;
     color: #ff7200;
 }
 
-.btnn a {
+.btnn a{
+    border-radius: 10px;
+    display: block;
+    color: #fff;
     text-decoration: none;
-    color: #000;
     font-weight: bold;
 }
 
