@@ -45,7 +45,7 @@
                     $_SESSION['loggedin'] = true;
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['email'] = $row['email'];
-                    header("location: ./index.html");
+                    header("location: ./index.php");
                 }
                 else{
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">

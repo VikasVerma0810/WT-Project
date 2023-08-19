@@ -36,7 +36,7 @@
                             <a class="nav-link active" href="#">Contact</a>
                         </li>
                     </ul>
-                    <button class="btn btn-warning rounded-pill me-3" type="submit">Book Room</button>
+                    <a class="btn btn-warning rounded-pill me-3" href="./login.php" role="button">Book Room</a>
                     <a class="btn btn-warning rounded-pill" href="./logout.php" role="button">Logout</a>
                 </div>
             </div>
