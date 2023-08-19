@@ -47,7 +47,7 @@
     <div id="carouselExample" class="carousel slide bg-black" style="z-index: 0;">
         <div class="carousel-inner">
             <div class="carousel-item active ">
-                <img alt="..." class="d-block w-100" src="./CSS/img/banner/banner.png">
+                <img alt="..." class="d-block w-100" src="./Partials/img/banner/banner.png">
                 <div class="carousel-caption">
                     <h5 class="animated bounceInRight fs-1" style="animation-delay: 1s">Web Design</h5>
                     <p class="animated bounceInLeft" style="animation-delay: 2s">Lorem ipsum dolor sit
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img alt="..." class="d-block w-100" src="./CSS/img/banner/banner2.png">
+                <img alt="..." class="d-block w-100" src="./Partials/img/banner/banner2.png">
                 <div class="carousel-caption">
                     <h5 class="animated bounceInRight fs-1" style="animation-delay: 1s">Web Design</h5>
                     <p class="animated bounceInLeft" style="animation-delay: 2s">Lorem ipsum dolor sit
@@ -93,10 +93,10 @@
                 <div class="col-xl-7 col-lg-7">
                     <div class="about_thumb d-flex justify-content-between">
                         <div class="img_1">
-                            <img src="./CSS/img/about/about_1.png" alt="">
+                            <img src="./Partials/img/about/about_1.png" alt="">
                         </div>
                         <div class="img_2">
-                            <img src="./CSS/img/about/about_2.png" alt="">
+                            <img src="./Partials/img/about/about_2.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
             <div class="row d-flex flex-row flex-wrap justify-content-evenly align-items-center">
                 <div class="single_offers border border-2 border-primary p-4 mt-4">
                     <div class="w-100 d-flex flex-column align-items-center">
-                        <img src="./CSS/img/offers/1.png" width="100%" alt="">
+                        <img src="./Partials/img/offers/1.png" width="100%" alt="">
                         <h3>Up to 35% savings on Club <br>
                             rooms and Suites</h3>
                         <ul>
@@ -133,7 +133,7 @@
                 <div class="single_offers border border-2 border-primary p-4 mt-4">
                     <div class="">
                         <div class="about_thumb">
-                            <img src="./CSS/img/offers/2.png" width="100%" alt="">
+                            <img src="./Partials/img/offers/2.png" width="100%" alt="">
                         </div>
                         <h3>Up to 35% savings on Club <br>
                             rooms and Suites</h3>
@@ -148,7 +148,7 @@
                 <div class="single_offers border border-2 border-primary p-4 mt-4">
                     <div class="">
                         <div class="about_thumb">
-                            <img src="./CSS/img/offers/3.png" width="100%" alt="">
+                            <img src="./Partials/img/offers/3.png" width="100%" alt="">
                         </div>
                         <h3>Up to 35% savings on Club <br>
                             rooms and Suites</h3>
@@ -173,10 +173,10 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="about_thumb d-flex justify-content-between">
                         <div class="img_1">
-                            <img src="./CSS/img/about/1.png" alt="">
+                            <img src="./Partials/img/about/1.png" alt="">
                         </div>
                         <div class="img_2">
-                            <img src="./CSS/img/about/2.png" alt="">
+                            <img src="./Partials/img/about/2.png" alt="">
                         </div>
                     </div>
                 </div>
