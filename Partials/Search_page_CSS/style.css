@@ -1,0 +1,144 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'open sans',sans-serif;
+}
+
+body{
+    height: 100%;
+    background-color: #ffff;
+    background-position: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+li{
+    list-style: none;
+}
+
+.nav_link{
+    text-decoration: none;
+    color:white;
+    font-size:1.5rem;
+}
+
+.nav_link:hover{
+    color:orange;
+}
+
+header{
+    z-index: 1;
+    background-image: url("https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1517&q=80");
+    background-size: cover;
+}
+
+
+.nav-item{
+    padding: 0px 10px;
+}
+
+
+.hero {
+    background-image: url('./Partials/img//Resort/resrot10.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+.datepicker {
+    width: 200px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card-image {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 5px;
+    font-weight: bold;
+    
+}
+
+.card-description {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.card-button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card-img img{
+    height: 250px;
+    border-radius: 10px;
+}
+
+.mt {
+margin-top: 20px !important;
+margin-bottom: 20px !important;
+}
+
+/* footer  */
+.bg_color {
+    background: #000;
+    color:white;
+}
+.bg_color ul li{
+    color: white;
+}
