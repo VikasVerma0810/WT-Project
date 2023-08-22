@@ -77,6 +77,17 @@ header{
     width: 200px;
 }
 
+
+.centered-title {
+    color:rgb(202, 50, 50);
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+
 .search-button {
     padding: 10px 20px;
     background-color: #333;
