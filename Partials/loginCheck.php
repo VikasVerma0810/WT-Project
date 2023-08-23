@@ -42,7 +42,6 @@
                         $_SESSION['admin'] = true;
                     }
                     $_SESSION['login'] = true;
-                    $_SESSION['loggedin'] = true;
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['email'] = $row['email'];
                     header("location: ./index.php");
