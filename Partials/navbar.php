@@ -23,7 +23,7 @@
                             <a class="nav-link active" href="#">Rooms</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">About</a>
+                            <a class="nav-link active" href="./About.xml">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Blogs</a>
