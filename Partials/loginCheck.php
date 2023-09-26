@@ -38,7 +38,7 @@
                 $row = mysqli_fetch_assoc($result);
                 if (password_verify($password, $row['password'])) {
                     session_start();
-                    if ($email == 'vikas@gmail.com') {
+                    if ($email == 'prathameshsyadav1712@gmail.com') {
                         $_SESSION['admin'] = true;
                     }
                     $_SESSION['login'] = true;
