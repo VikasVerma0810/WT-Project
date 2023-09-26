@@ -1,4 +1,6 @@
-<?php session_start() ?>
+<?php session_start();
+    require "./Partials/connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +23,15 @@
     </style>
     <title>Resort Search</title>
 </head>
+<!-- id  -->
+<!-- name  -->
+<!-- per day rate  -->
+<!-- attributs  -->
+<!-- gallery -->
+<!-- location  -->
+<!-- ratings -->
+<!-- <iframe width="930" height="523" src="https://www.youtube.com/embed/bpEnbEEIgQo" title="West Downs - The Heritage Resort | Best Resort in Ooty" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+
 <body>
     <?php require "./Partials/navbar.php" ?>
     <section class="hero">
@@ -39,79 +50,27 @@
     
     <div class="container mt">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card card-img ">
-                    <img src="./Partials/img/Resort/resort1.jpg" alt="Luxury Resort">
-                    <h2 class="card-title p-1">Azure Haven Resort</h2>
-                    <p class="card-description px-1">Discover paradise at Azure Haven Resort. Immerse yourself in luxury, surrounded by crystal-clear waters and pristine beaches.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-img">
-                    <img src="./Partials/img/Resort/resrot2.jpg" alt="Seaside Retreat">
-                    <h2 class="card-title p-1">Mountain Vista Retreat</h2>
-                    <p class="card-description px-1">Elevate your senses at Mountain Vista Retreat. Embrace nature's beauty while enjoying top-tier amenities and breathtaking views.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-img">
-                    <img src="./Partials/img/Resort/resrot3.jpg" alt="Seaside Retreat">
-                    <h2 class="card-title p-1">Sunset Serenity Resort</h2>
-                    <p class="card-description px-1">Experience tranquility at Sunset Serenity Resort. Unwind on golden shores as the sun paints the sky with hues of orange and pink.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <div class="col-md-4 h-100">
-                <div class="card card-img">
-                    <img src="./Partials/img/Resort/resrot4.jpg" alt="Seaside Retreat">
-                    <h2 class="card-title p-1">Tropical Oasis Getaway</h2>
-                    <p class="card-description px-1">Escape to the Tropical Oasis Getaway. Swaying palms, turquoise waters, and indulgent relaxation await you.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-img">
-                    <img src="./Partials/img/Resort/resrot5.jpg" alt="Seaside Retreat">
-                    <h2 class="card-title p-1">Rustic Elegance Lodge</h2>
-                    <p class="card-description px-1">Find luxury in nature at Rustic Elegance Lodge. Unplug and recharge in the heart of the wilderness, surrounded by comfort.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-img">
-                    <img src="./Partials/img/Resort/resrot6.jpg" alt="Seaside Retreat">
-                    <h2 class="card-title p-1">Crystal Springs Spa & Resort</h2>
-                    <p class="card-description px-1">Rejuvenate your soul at Crystal Springs Spa & Resort. Luxuriate in spa treatments and revitalize amidst nature's serenity.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-img">
-                    <img src="./Partials/img/Resort/resrot7.jpg" alt="Seaside Retreat">
-                    <h2 class="card-title p-1">Whispering Pines Retreat</h2>
-                    <p class="card-description px-1">Uncover tranquility at Whispering Pines Retreat. Nestled in the woods, find solace in the soft rustle of leaves and chirping birds.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-img">
-                    <img src="./Partials/img/Resort/resrot8.jpg" alt="Seaside Retreat">
-                    <h2 class="card-title p-1">Seaside Bliss Resort</h2>
-                    <p class="card-description px-1">Discover pure joy at Seaside Bliss Resort. Let the rhythmic waves and endless coastline awaken your sense of adventure.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-img">
-                    <img src="./Partials/img/Resort/resrot9.jpg" alt="Seaside Retreat">
-                    <h2 class="card-title p-1">Eternal Sands Oasis</h2>
-                    <p class="card-description px-1">Embark on a desert adventure at Eternal Sands Oasis. Witness the magic of starry nights and the allure of endless dunes.</p>
-                    <button class="btn btn-success">Book Now</button>
-                </div>
-            </div>
-            <!-- Add more columns for additional cards -->
+        <?php
+            $sql = "select * from resortinfo";
+            $result = mysqli_query($conn, $sql);
+            $num = mysqli_num_rows($result);
+            for ($i=0; $i < $num; $i++) { 
+                $row = mysqli_fetch_assoc($result);
+                $id = $row['id'];
+                $name = $row['Name'];
+                $desc = $row['description'];
+                $img = $row['poster'];
+                echo 
+                '<div class="col-md-4">
+                    <div class="card card-img ">
+                        <img src="'.$img.'" alt="Luxury Resort">
+                        <h2 class="card-title p-1">'.$name.'</h2>
+                        <p class="card-description px-1">'.$desc.'</p>
+                        <a href="./booking.php?id='.$id.'" class="btn btn-success">Book Now</a>
+                    </div>
+                </div>';
+            }
+        ?>
         </div>
     </div>
     <?php require "./Partials/footer.php" ?>

@@ -17,10 +17,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav justify-content-evenly mx-auto mb-2 mb-lg-0 fs-5">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Rooms</a>
+                            <a class="nav-link active" href="./search.php">Rooms</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="./About.xml">About</a>
