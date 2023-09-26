@@ -1,0 +1,27 @@
+
+#header {
+    color: #f74413;
+    font-family: ralewaybold;
+    font-size: 40px;
+    
+}
+
+.hotel_container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin:15px;
+    padding:15px;
+}
+.hotel_container #hotel-img{
+   height: 400px;
+   width: 100%;
+}
+
+.width{
+    width:100% !important;
+    background-color: #E4F1FF !important;
+}
+
+
+
+
