@@ -14,3 +14,25 @@
     font-size: 20px;
     align-items: center;
 }
+.resort-heading{
+    background-color: beige;
+}
+/* .reviews-section{
+    float: left;
+} */
+
+/* suggestion box  */
+.horizon-lines hr:nth-child(1){
+    border: 2px solid black;
+    width: 40%;
+    margin: 5px 0px;
+}
+.horizon-lines hr:nth-child(2){
+    margin: 3px 0px;
+    border: 2px solid rgb(0, 89, 255);
+    width: 60%;
+}
+.sug-card{
+    border-bottom: 2px solid rgb(0, 89, 255)!important;
+    border-top: 2px solid rgb(0, 89, 255)!important;
+}
