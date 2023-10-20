@@ -11,6 +11,7 @@
     <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="filter.css">
     <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Poppins&family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
     <style>
         .hero {
@@ -25,14 +26,6 @@
     </style>
     <title>Resort Search</title>
 </head>
-<!-- id  -->
-<!-- name  -->
-<!-- per day rate  -->
-<!-- attributs  -->
-<!-- gallery -->
-<!-- location  -->
-<!-- ratings -->
-<!-- <iframe width="930" height="523" src="https://www.youtube.com/embed/bpEnbEEIgQo" title="West Downs - The Heritage Resort | Best Resort in Ooty" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
 <body style="background-color: #f8f9fa;">
     <?php require "./Partials/navbar.php" ?>
@@ -47,10 +40,11 @@
             </div>
         </div>
     </section>
-
+    
     <h1 class="centered-title">Our Featured Resort</h1>
     
-    <div class="container mt">
+    <div class="container mt d-flex flex-row">
+        <?php require "./filter.php" ?>
         <div class="col">
             <?php
                 $sql = "select * from resortinfo";
@@ -63,7 +57,7 @@
                     $desc = $row['description'];
                     $img = $row['poster'];
                     echo 
-                    '<div class="col-md-9 my-4">
+                    '<div class="w-100 my-4">
                         <div class="card card-img d-flex flex-row rounded-2 border-start border-end border-primary border-2" style="border: none;">
                             <img width="250px" height="250px" class="m-3 rounded-2 shadow" src="'.$img.'" alt="Luxury Resort">
                             <div class="col-6 me-3">

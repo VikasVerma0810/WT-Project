@@ -32,7 +32,8 @@
                             <a class="nav-link active" href="#">Contact</a>
                         </li>
                     </ul>
-                    <a class="btn btn-warning rounded-pill me-3" href="./search.php" role="button">Book Room</a>';
+                    <a class="btn btn-warning rounded-pill me-3" href="./search.php" role="button">Book Room</a>
+                    <a class="btn btn-warning rounded-pill me-3" href="./admin-panel/index.php" role="button">Admins</a>';
 
                         if ($login) {
                             echo '<a class="btn btn-warning rounded-pill" href="./logout.php" role="button">Logout</a>';

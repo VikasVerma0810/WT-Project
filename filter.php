@@ -1,0 +1,181 @@
+    <div class="h-100 mt-4 filter-container">
+        <div>
+            <div class="filters-header">
+                <div class="heading">Filter</div>
+                <button class="btn btn-sm radius-lg filter-reset-button">Reset</button>
+            </div>
+
+
+            <div class="sub-filter-heading">
+                <div>Facilities</div>
+            </div>
+            <div>
+                <div class="checkbox-filter">
+                    <label for="filter_facility_pool" class="custom-checkbox">
+                        <input type="checkbox" name="facilities" id="filter_facility_pool" value="pool">
+                        <span class="custom-checkbox-icon"></span>
+                        Swimming Pool
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_facility_spa" class="custom-checkbox">
+                        <input type="checkbox" name="facilities" id="filter_facility_spa" value="spa">
+                        <span class="custom-checkbox-icon"></span>
+                        Spa
+                    </label>
+                </div>
+
+                <div class="checkbox-filter">
+                    <label for="filter_service_room_service" class="custom-checkbox">
+                        <input type="checkbox" name="services[]" id="filter_service_room_service" value="room_service">
+                        <span class="custom-checkbox-icon"></span>
+                        Room Service
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_service_gym" class="custom-checkbox">
+                        <input type="checkbox" name="services[]" id="filter_service_gym" value="gym">
+                        <span class="custom-checkbox-icon"></span>
+                        Gym
+                    </label>
+                </div>
+
+                <div class="checkbox-filter">
+                    <label for="filter_facility_wifi" class="custom-checkbox">
+                        <input type="checkbox" name="facilities" id="filter_facility_wifi" value="wifi">
+                        <span class="custom-checkbox-icon"></span>
+                        Wi-Fi
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="sub-filter-heading">
+                <div>Destinations</div>
+            </div>
+            <div>
+                <div class="checkbox-filter">
+                    <label for="filter_destination_india" class="custom-checkbox">
+                        <input type="checkbox" name="destination_ids" id="filter_destination_india" value="1"
+                            checked="checked">
+                        <span class="custom-checkbox-icon"></span>
+                        Maharasatra
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_destination_madhya pradesh" class="custom-checkbox">
+                        <input type="checkbox" name="destination_ids" id="filter_destination_madhya pradesh" value="45">
+                        <span class="custom-checkbox-icon"></span>
+                        Madhya Pradesh
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_destination_gurgaon" class="custom-checkbox">
+                        <input type="checkbox" name="destination_ids" id="filter_destination_gurgaon" value="473">
+                        <span class="custom-checkbox-icon"></span>
+                        Gurgaon
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_destination_haryana" class="custom-checkbox">
+                        <input type="checkbox" name="destination_ids" id="filter_destination_haryana" value="52">
+                        <span class="custom-checkbox-icon"></span>
+                        Haryana
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_destination_umaria" class="custom-checkbox">
+                        <input type="checkbox" name="destination_ids" id="filter_destination_umaria" value="183">
+                        <span class="custom-checkbox-icon"></span>
+                        Rajsthan
+                    </label>
+                </div>
+            </div>
+
+            <div class="sub-filter-heading">
+                <div>Rating</div>
+            </div>
+            <div>
+                <div class="checkbox-filter">
+                    <label for="filter_rating_5" class="custom-checkbox">
+                        <input type="checkbox" name="ratings" id="filter_rating_5" value="5">
+                        <span class="custom-checkbox-icon"></span>
+                        5 Stars
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_rating_4" class="custom-checkbox">
+                        <input type="checkbox" name="ratings" id="filter_rating_4" value="4">
+                        <span class="custom-checkbox-icon"></span>
+                        4 Stars
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_rating_3" class="custom-checkbox">
+                        <input type="checkbox" name="ratings" id="filter_rating_3" value="3">
+                        <span class="custom-checkbox-icon"></span>
+                        3 Stars
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_rating_2" class="custom-checkbox">
+                        <input type="checkbox" name="ratings" id="filter_rating_2" value="2">
+                        <span class="custom-checkbox-icon"></span>
+                        2 Stars
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_rating_1" class="custom-checkbox">
+                        <input type="checkbox" name="ratings" id="filter_rating_1" value="1">
+                        <span class="custom-checkbox-icon"></span>
+                        1 Star
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="sub-filter-heading">
+                <div>Duration</div>
+            </div>
+            <div>
+                <div class="checkbox-filter">
+                    <label for="filter_duration_0_2hours" class="custom-checkbox">
+                        <input type="checkbox" name="durations" id="filter_duration_0_2hours" value="0_2hours">
+                        <span class="custom-checkbox-icon"></span>
+                        0-2 Hours
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_duration_2_5hours" class="custom-checkbox">
+                        <input type="checkbox" name="durations" id="filter_duration_2_5hours" value="2_5hours">
+                        <span class="custom-checkbox-icon"></span>
+                        2-5 Hours
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_duration_full_day" class="custom-checkbox">
+                        <input type="checkbox" name="durations" id="filter_duration_full_day" value="full_day">
+                        <span class="custom-checkbox-icon"></span>
+                        Full Day
+                    </label>
+                </div>
+                <div class="checkbox-filter">
+                    <label for="filter_duration_multi_day" class="custom-checkbox">
+                        <input type="checkbox" name="durations" id="filter_duration_multi_day" value="multi_day">
+                        <span class="custom-checkbox-icon"></span>
+                        Multi Day
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log("started")
+        let filter = document.getElementsByClassName('filter-container');
+        let computedStyle = window.getComputedStyle(filter[0]);
+        // console.log(computedStyle)
+        let topValue = computedStyle.getPropertyValue("top");
+        if(topValue < 0){
+            console.log("Came up")
+        }
+    </script>
