@@ -57,19 +57,18 @@ header{
 }
 
 .search-bar {
-    margin-top: 20px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    position: relative;
+    justify-content: space-evenly;
 }
 
 .search-bar input {
-    padding: 10px;
-    margin-right: 10px;
     border: 1px solid #ccc;
+    padding: 2px 4px;
     border-radius: 5px;
-    min-width: 200px;
 }
 
 .datepicker {

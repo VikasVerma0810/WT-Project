@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Partials/Search_page_CSS/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="filter.css">
@@ -26,29 +27,65 @@
     </style>
     <title>Resort Search</title>
 </head>
-
 <body style="background-color: #f8f9fa;">
     <?php require "./Partials/navbar.php" ?>
     <section class="hero">
         <div class="hero-content">
             <h1>Find Your Dream Resort</h1>
-            <div class="search-bar">
-                <input type="text" id="location" placeholder="Enter Location">
-                <input type="text" id="checkin" class="datepicker" placeholder="Check-In Date">
-                <input type="text" id="checkout" class="datepicker" placeholder="Price Below">
-                <button class="btn btn-primary btn-lg">Search</button>
-            </div>
         </div>
     </section>
     
     <h1 class="centered-title">Our Featured Resort</h1>
     
-    <div class="container mt d-flex flex-row">
+    <div class="container mt d-flex flex-row justify-content-between">
         <?php require "./filter.php" ?>
-        <div class="col">
+        <div class="col col-9">
             <?php
-                $sql = "select * from resortinfo";
-                $result = mysqli_query($conn, $sql);
+                $count = 0;
+                $queryArray = [];
+                $sqlResorts = "select * from resortinfo";
+                if (isset($_GET['amenities'])) {
+                    $Amens = $_GET['amenities'];
+                    $resultAmen = explode(',', $Amens);
+                    for ($i=0; $i < count($resultAmen); $i++) {
+                        $amenName = str_replace(" ", "", $resultAmen[$i]);
+                        echo '<script>
+                                checkAmen = amenities[0].querySelector(`input[name="'.$amenName.'"]`)
+                                checkAmen.checked = true
+                            </script>';
+                        $amenQuery = " amenities like '%".$resultAmen[$i]."%'";
+                        $queryArray[$count] = $amenQuery;
+                        $count++;
+                    }
+                }
+                if (isset($_GET['rating'])) {
+                    $rating = $_GET['rating'];
+                    echo '<script>
+                                checkRating = ratings[0].querySelector(`input[name="'.$rating.'"]`)
+                                checkRating.checked = true
+                            </script>';
+                    $queryArray[$count] = " rating>=".$rating."";
+                    $count++;
+                }
+                if (isset($_GET['location'])) {
+                    $location = $_GET['location'];
+                    $resultloca = explode(',', $location);
+                    $queryArray[$count] = " location like '%".$location."%'";
+                    $count++;
+                }
+
+                if ($count) {
+                    $whereClauses = " where";
+                    for ($i=0; $i < $count-1; $i++) { 
+                        $whereClauses .= $queryArray[$i];
+                        $whereClauses .= ' or';
+                    }
+                    $whereClauses .= $queryArray[$count - 1];
+                    $sqlResorts .= $whereClauses;
+                    echo $sqlResorts;
+                }
+
+                $result = mysqli_query($conn, $sqlResorts);
                 $num = mysqli_num_rows($result);
                 for ($i=0; $i < $num; $i++) { 
                     $row = mysqli_fetch_assoc($result);
@@ -56,8 +93,13 @@
                     $name = $row['Name'];
                     $desc = $row['description'];
                     $img = $row['poster'];
+                    $price = $row['price'];
+                    $location = $row['location'];
+                    $discount = $row['discount'];
+                    $rating = $row['rating'];
+                    $rating = number_format($rating, 1);
                     echo 
-                    '<div class="w-100 my-4">
+                    '<div class="w-100 my-4 shadow">
                         <div class="card card-img d-flex flex-row rounded-2 border-start border-end border-primary border-2" style="border: none;">
                             <img width="250px" height="250px" class="m-3 rounded-2 shadow" src="'.$img.'" alt="Luxury Resort">
                             <div class="col-6 me-3">
@@ -101,7 +143,7 @@
                                     </svg>
                                 </div>
                                 <div class="my-1">
-                                    <a href="#" style="font-size:13px;" class="card-description text-info link-underline-primary">Location</a>
+                                    <a href="#" style="font-size:13px;" class="card-description text-info link-underline-primary">'.$location.'</a>
                                     <a href="#" style="font-size:13px;" class="card-description text-info link-underline-primary ms-4">Show on map</a>
                                     <span style="font-size:13px;" class="card-description ms-4">9.9 km from center</span>
                                 </div>
@@ -129,12 +171,12 @@
                                         <p style="font-size:13px; margin-bottom:0px;">1,200+ reviews</p>
                                     </div>
                                     <div class="my-auto mx-1 p-2 text-light fw-bold rounded-top rounded-end" style="background-color:#001bff">
-                                        8.8
+                                        '.$rating.'
                                     </div>
                                 </div>
                                 <div class="my-3">
-                                    <del class="text-danger">₹ 10000.00</del>
-                                    <p class="fs-4 m-0">₹ 10000.00</p>
+                                    <del class="text-danger">₹ '.$price.'</del>
+                                    <p class="fs-4 m-0">₹ '.($price - $price*($discount/100)).'</p>
                                     <p class="text-secondary m-0">Per room</p>
                                 </div>
                                 <a href="./booking.php?id='.$id.'" class="btn btn-primary w-100">See Availibility &gt;</a>
