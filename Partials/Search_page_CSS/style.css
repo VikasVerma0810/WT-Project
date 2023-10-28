@@ -11,6 +11,10 @@ body{
     font-family: 'Poppins', sans-serif!important;
 }
 
+.main-context{
+    background: linear-gradient(to right, rgb(0, 191, 255, 0.2), rgb(255, 255, 255, 0.5), rgb(0, 191, 255, 0.2));
+}
+
 li{
     list-style: none;
 }
@@ -79,9 +83,7 @@ header{
 .centered-title {
     color:rgb(202, 50, 50);
     text-align: center;
-    margin-top: 30px;
     font-size: 2rem;
-    margin-top: 30px;
     margin-bottom: 20px;
 }
 

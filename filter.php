@@ -1,4 +1,4 @@
-    <div class="h-100 mt-4 filter-container px-1">
+    <div class="h-100 mt-4 filter-container px-1 bg-info bg-opacity-25">
         <div>
             <div class="filters-header">
                 <div class="heading">Filter</div>
@@ -37,15 +37,6 @@
                     <ul id="location-suggestion"></ul>
                 </div>
                 <div class="mt-2" id="location-list">
-                    <div>
-                        <p class="py-1 px-3 my-2 bg-warning rounded-pill">
-                            <span>Pune</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" onclick="removeLocation(this)" width="16" height="16" fill="currentColor" class="my-1 bi bi-x-circle" viewBox="0 0 16 16" style="float:right;cursor:pointer;">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                        </p>
-                    </div>
                 </div>
             </div>
 
@@ -140,6 +131,7 @@
         const locaFields = locations[0].getElementsByTagName('input');
         const suggestionList = document.getElementById("location-suggestion");
         const suggestionSaved = document.getElementById("location-list");
+        const savedLocation = document.getElementsByClassName("saved-location");
         
         for (let index = 0; index < ratingFields.length; index++) {
             const element = ratingFields[index];
@@ -194,11 +186,24 @@
 
 
             // checking for locations
-            let locationVal = locaFields[0].value.trim()
-            if (locationVal !== "") {
+            let locationVal = ""
+            let value = ""
+            // console.log(savedLocation.length)
+            for (let index = 0; index < savedLocation.length-1; index++) {
+                const element = savedLocation[index];
+                value = element.textContent.trim();
+                // console.log(value)
+                if (value !== "") {
+                    locationVal += value
+                    locationVal += '.'
+                }
+            }
+            if (savedLocation.length) {
+                locationVal += savedLocation[savedLocation.length-1].textContent.trim()
+                // console.log(value)
                 filterUrl += `&location=${locationVal}`
             }
-
+            // console.log(locationVal)
             window.location = filterUrl
         }
 
@@ -224,7 +229,7 @@
 
                         let addsuggestionSaved = document.createElement("div");
                         addsuggestionSaved.innerHTML = `<p class="py-1 px-3 my-2 bg-warning rounded-pill">
-                        <span>${suggestion.location}</span>
+                        <span class="saved-location">${suggestion.location}</span>
                         <svg xmlns="http://www.w3.org/2000/svg" onclick="removeLocation(this)" width="16" height="16" fill="currentColor" class="my-1 bi bi-x-circle" viewBox="0 0 16 16" style="float:right;cursor:pointer;">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>

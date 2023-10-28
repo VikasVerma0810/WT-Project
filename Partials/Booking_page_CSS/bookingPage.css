@@ -1,8 +1,4 @@
 /* top gallery styling */
-.resort-gallery video{
-    border-left: 5px solid white;
-    border-right: 5px solid white;
-}
 
 
 /* header styling */
@@ -13,9 +9,6 @@
 .resort-heading p{
     font-size: 20px;
     align-items: center;
-}
-.resort-heading{
-    background-color: beige;
 }
 /* .reviews-section{
     float: left;
@@ -37,3 +30,6 @@
     border-top: 2px solid rgb(0, 89, 255)!important;
 }
 
+.desc-boxes h3{
+    font-family: "Agbalumo variant0", Tofu;
+}

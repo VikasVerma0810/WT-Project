@@ -34,7 +34,7 @@
             <h1>Find Your Dream Resort</h1>
         </div>
     </section>
-    
+    <div class="pt-5 main-context">
     <h1 class="centered-title">Our Featured Resort</h1>
     
     <div class="container mt d-flex flex-row justify-content-between">
@@ -69,9 +69,12 @@
                 }
                 if (isset($_GET['location'])) {
                     $location = $_GET['location'];
-                    $resultloca = explode(',', $location);
-                    $queryArray[$count] = " location like '%".$location."%'";
-                    $count++;
+                    echo $location;
+                    $resultloca = explode('.', $location);
+                    for ($i=0; $i < count($resultloca); $i++) { 
+                        $queryArray[$count] = " location like '%".$resultloca[$i]."%'";
+                        $count++;;
+                    }
                 }
 
                 if ($count) {
@@ -185,6 +188,7 @@
                     </div>';
                     }
             ?>
+        </div>
         </div>
     </div>
     <?php require "./Partials/footer.php" ?>
