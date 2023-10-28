@@ -9,6 +9,7 @@ header('Content-Type: application/json');
 
 // Connect to the database and query the table
     require "../config/config.php"; 
+    // require "./connection.php";
     if (isset($_GET['location'])) {
         $location = $_GET['location'];
         $query = $conn->query("SELECT * FROM resortinfo where location like '%".$location."%'");
