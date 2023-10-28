@@ -37,7 +37,7 @@
                     <ul id="location-suggestion"></ul>
                 </div>
                 <div class="mt-2" id="location-list">
-                    <div>
+                    <!-- <div>
                         <p class="py-1 px-3 my-2 bg-warning rounded-pill">
                             <span>Pune</span>
                             <svg xmlns="http://www.w3.org/2000/svg" onclick="removeLocation(this)" width="16" height="16" fill="currentColor" class="my-1 bi bi-x-circle" viewBox="0 0 16 16" style="float:right;cursor:pointer;">
@@ -45,7 +45,7 @@
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                             </svg>
                         </p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -206,7 +206,8 @@
 
         async function locationSuggest() {
             let locationVal = locaFields[0].value.trim()
-            let suggestions = await fetch(`http://localhost/WT-Project/Partials/locationSug.php?location=${locationVal}`)
+            // let suggestions = await fetch(`http://localhost/WT-Project/Partials/locationSug.php?location=${locationVal}`)
+            let suggestions = await fetch(`http://localhost/MINI_Project_WT/Partials/locationSug.php?&location=${locationVal}`)
             suggestions = await suggestions.json()
             suggestionList.innerHTML = '';
 
