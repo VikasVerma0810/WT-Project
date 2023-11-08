@@ -1,13 +1,16 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['cPass'])){
+        if (isset($_POST['name'])){
             $email = $_POST['email'];
             $password = $_POST['pass'];
-            $cpassword = $_POST['cPass'];
-            if ($password == $cpassword) {    
+            $name = $_POST['name'];
+            $phone = $_POST['phone'];
+            // $cpassword = $_POST['cPass'];
+            // if ($password == $cpassword) {
                 $search = "Select * from log_details where email = '$email'";
                 $result = mysqli_query($conn, $search);
                 $num = mysqli_num_rows($result);
+                $image = 'http://localhost/WT-Project/admin-panel/resorts/gallery/profile.png';
                 if ($num != 0) {
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>Alert!</strong> Account with this email already exist.
@@ -16,17 +19,11 @@
                 }
                 else {
                     $hash = password_hash("$password", PASSWORD_DEFAULT);
-                    $sql = "INSERT INTO `log_details` (`email`, `password`) VALUES ('$email', '$hash')";
+                    $sql = "INSERT INTO `log_details` (`email`, `password`, `phone`, `name`, `image`) VALUES ('$email', '$hash', '$phone', '$name', '$image')";
                     mysqli_query($conn, $sql);
                     header("location: login.php");
                 }
-            }
-            else{
-                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error!</strong> Password does not match.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-            }
+            // }
         }
         else{
             $email = $_POST['email'];

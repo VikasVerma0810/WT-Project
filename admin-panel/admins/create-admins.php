@@ -23,23 +23,27 @@
             $password = $_POST['password'];
             $adminname = $_POST['adminname'];
 
-            $insert = $conn->prepare("INSERT INTO admin(email, adminname, mypassword)
-            VALUES(:email, :adminname, :mypassword)");
+            $login = $conn->query("SELECT * FROM admin WHERE email='$email'");
+            $login->execute();
 
-            $insert->execute([
+            $fetch = $login->fetch(PDO::FETCH_ASSOC);
+            if($login->rowCount() > 0){
+              echo "<script>alert('Admin already exists')</script>";
+              echo "<script> window.location.href='".ADMINURL."/admins/create-admins.php'; </script>";
+
+            }
+            else{
+              $insert = $conn->prepare("INSERT INTO admin(email, adminname, mypassword)
+              VALUES(:email, :adminname, :mypassword)");
+
+              $insert->execute([
                 ":email" => $email,
                 ":mypassword" => password_hash($password, PASSWORD_DEFAULT),
                 ":adminname" => $adminname,
-            ]);
+              ]);
 
-
-          // header("Location: login.php");
-
-          echo "<script> window.location.href='".ADMINURL."/admins/admins.php'; </script>";
-
-       
-
-      
+              echo "<script> window.location.href='".ADMINURL."/admins/admins.php'; </script>";
+            }
 
     }
   }

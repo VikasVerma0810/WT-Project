@@ -21,9 +21,8 @@
 
             <div class="content" style="min-height: 90vh;">
                 <div class="intro">
-                    <h1>Adopt a Pet & <br><span style="color: #ff7200;"> <strong>Book Resort</strong> </span> <br>friend</h1>
-                    <p class="par">When you adopt a pet, you're not just saving a life, <br /> you're gaining a loyal companion.</p>
-                    <button class="cn custom_orange_bg fs-4 btnn"><a href="./index.html">Join Us</a></button>
+                    <h1>Your journey to <br><span style="color: #ff7200;"> <strong>relaxation and adventure </strong> </span> <br>begins with a simple click.</h1>
+                    <p class="par">Life is short, but your next adventure is just a click away, <br /> Book your resort today.</p>
                 </div>
 
                 <div id="loginBox">
@@ -76,10 +75,13 @@
                 <div id="signUpBox">
                     <div class="form d-flex flex-column justify-content-center align-items-center">
                         <h2 class="custom_orange_fg">Sign Up</h2>
-                        <form action="./login.php" method="post">
+                        <form action="./login.php" id="signUpForm" method="post">
                             <input id="email" class="custom_orange_input" type="email" placeholder="Enter Email" name="email" required>
-                            <input id="password" class="custom_orange_input" type="password" placeholder="Enter Password" name="pass" required>
-                            <input id="confirmPassword" class="custom_orange_input" type="password" placeholder="Repeat Password" name="cPass" required>
+                            <input id="name" class="custom_orange_input" type="text" placeholder="Enter Name" name="name" required>
+                            <input id="phone" class="custom_orange_input" type="text" placeholder="Enter mobile No." name="phone" required>
+                            <input id="password" oninput="validatePassword()" class="custom_orange_input" type="password" placeholder="Enter Password" name="pass" required>
+                            <p>Please enter stong password</p>
+                            <!-- <input id="confirmPassword" class="custom_orange_input" type="password" placeholder="Repeat Password" name="cPass" required> -->
                             
                             <p>By creating an account you agree to our <a href="#" class="link-hover-white" style="color:rgb(237, 66, 66)">Terms &Privacy</a>.</p>
                             
@@ -129,7 +131,9 @@
     <script>
         let signUpBox = document.getElementById('signUpBox')
         let loginBox = document.getElementById('loginBox')
+        let signupButton = document.getElementById('signupButton')
         signUpBox.style.display = 'none';
+        signupButton.style.display = 'none';
 
         let change = () => {
             if (signUpBox.style.display == 'none') {
@@ -141,5 +145,43 @@
                 loginBox.style.display = 'block'
             }
         }
+
+        const signUpForm = document.getElementById('signUpForm')
+        const signUpFormP = signUpForm.getElementsByTagName('p')
+        signUpFormP[0].style.display = "none"
+        function validatePassword() {
+            console.log()
+            const password = document.getElementById('password').value
+            const lengthRegex = /.{8,}/;            // Minimum 8 characters
+            const uppercaseRegex = /[A-Z]/;         // At least one uppercase letter
+            const lowercaseRegex = /[a-z]/;         // At least one lowercase letter
+            const numberRegex = /[0-9]/;            // At least one number
+            const specialCharRegex = /[!@#$%^&*]/;  // At least one special character (you can customize this)
+
+            // Check each criterion
+            const isLengthValid = lengthRegex.test(password);
+            const isUppercaseValid = uppercaseRegex.test(password);
+            const isLowercaseValid = lowercaseRegex.test(password);
+            const isNumberValid = numberRegex.test(password);
+            const isSpecialCharValid = specialCharRegex.test(password);
+
+            // Return true if all criteria are met
+            if (
+                isLengthValid &&
+                isUppercaseValid &&
+                isLowercaseValid &&
+                isNumberValid &&
+                isSpecialCharValid
+            ){
+                signUpFormP[0].style.display = "none"
+                signupButton.style.display = 'block';
+            }
+            
+            else{
+                signupButton.style.display = 'none';
+                signUpFormP[0].style.display = "block"
+            }
+        }
+
     </script>
 </html>

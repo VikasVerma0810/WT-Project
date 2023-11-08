@@ -15,31 +15,32 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav justify-content-evenly mx-auto mb-2 mb-lg-0 fs-5">
+                    <ul class="locations navbar-nav justify-content-evenly mx-auto mb-2 mb-lg-0 fs-5">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./search.php">Rooms</a>
+                            <a class="nav-link active" href="./search.php">Resort</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./About.xml">About</a>
+                            <a class="nav-link active" href="./About.php">About</a>
                         </li>
+                        
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Blogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Contact</a>
+                            <a class="nav-link active" href="#footer">Contact</a>
                         </li>
                     </ul>
-                    <a class="btn btn-warning rounded-pill me-3" href="./search.php" role="button">Book Room</a>
-                    <a class="btn btn-warning rounded-pill me-3" href="./admin-panel/index.php" role="button">Admins</a>';
+                    <a class="btn btn-warning rounded-pill me-3" style="background-color:#ff7200 !important;" href="./search.php" role="button">Book Resort</a>';
 
                         if ($login) {
-                            echo '<a class="btn btn-warning rounded-pill" href="./logout.php" role="button">Logout</a>';
+                            echo '<a href="./myProfile.php" style="background-color:#ff7200 !important;" class="btn btn-outline-success bg-warning rounded-pill ms-2" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" class="text-black" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                                </svg>
+                            </a>';
                         }
                         else{
-                            echo '<a class="btn btn-warning rounded-pill" href="./login.php" role="button">Login / SignUp</a>';
+                            echo '<a class="btn btn-warning rounded-pill" style="background-color:#ff7200 !important;" href="./login.php" role="button">Login / SignUp</a>';
                         }
                     
                 echo '</div>

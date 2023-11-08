@@ -1,4 +1,31 @@
 <?php session_start() ?>
+<?php
+
+    $login = 0;
+    if (isset($_SESSION['login'])) {
+        if ($_SESSION['login']) {
+            $login = 0;
+        }
+    }
+    require './Partials/connection.php';
+
+    $rid = $_GET['id'];
+
+    $sql = "select * from resortinfo where id=$rid";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $resName = $row['Name'];
+    $location = $row['location'];
+    $price = $row['price'];
+    $discount = $row['discount'];
+    $contact_info = $row['contact_info'];
+    $highlights = $row['highlights'];
+    $overview = $row['overview'];
+    $more = $row['more'];
+    $image = $row['poster'];
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +43,38 @@
     <title>Booking Page</title>
 </head>
 
+<style>
+    .update{
+            width:100%;
+            height:100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .boxi{
+            width:50%;
+        }
+</style>
+
+
+
 <body class="bg-light">
     <?php require "./Partials/navbar.php" ?>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $id = $_SESSION['id'];
+        $name = $_POST['name'];
+        $mobile = $_POST['mobile'];
+        $person = $_POST['person'];
+        $checkIn = $_POST['checkIn'];
+        $checkOut = $_POST['checkOut'];
+
+        $sql = "INSERT INTO `booking` (`id`, `rid`, `name`, `mobile`, `count`, `checkIn`, `checkOut`) VALUES ('$id', '$rid', '$name', '$mobile', '$person', '$checkIn', '$checkOut')";
+        mysqli_query($conn, $sql);
+        echo '<script>alert("Resort has been booked successfully.")</script>';
+    }
+?>
     <div class="d-flex flex-row justify-content-evenly resort-gallery">
-        <img class = "col-6 border-end border-light border-2" src="./Partials/resortLogo.jpg" alt="">
+        <img class = "col-6 border-end border-light border-2" src="<?php echo $image; ?>" alt="">
         <div class="gallery-pic d-flex flex-column align-items-center justify-content-between col-3 border-end border-start border-light border-2">
             <img width="100%" height="50%" src="./Partials/Booking_page_css/sampleResort1.jpg" class="border-bottom border-light border-2" alt="">
             <img width="100%" height="50%" src="./Partials/Booking_page_css/sampleResort2.jpg" class="border-top border-light border-2" alt="">
@@ -31,13 +86,13 @@
     </div>
     <div class="px-5 py-4 resort-heading bg-info bg-opacity-25">
         <div class="container">
-            <h1>Resort Name</h1>
+            <h1><?php echo $resName; ?></h1>
             <div class="reviews-section d-flex flex-row justify-content-between">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="30px" viewBox="0 0 24 24" id="locationmarker">
                         <path d="M12 2a7 7 0 0 0-7 7c0 5.31 6 12.35 6.24 12.65l.76.89.76-.89C13 21.35 19 14.31 19 9a7 7 0 0 0-7-7Zm0 10a3 3 0 1 1 3-3 3 3 0 0 1-3 3Z" data-name="Layer 2" fill="#595bd4" class="color000000 svgShape"></path>
                     </svg>
-                    Location - <a href="#" class="text-primary fw-bold">Show Map</a>
+                    <?php echo $location; ?> - <a href="#" class="text-primary fw-bold">Show Map</a>
                 </div>
                 <div>
                     <span class="rating-box px-4 py-1 align-items-center rounded fw-bold shadow-sm text-light bg-success fs-5 mx-4">4.5 / 5</span>
@@ -95,64 +150,73 @@
             </div>
             <div class="bg-white border border-body-tertiary my-4">
                 <h3 class="ps-3 my-3 border-start border-4 border-primary fw-bold">Resort Highlights</h3>
-                <p class="m-4">Description</p>
+                <ul class="mx-5">
+                    <?php
+                        $highlights = explode('<--->', $highlights);
+                        for ($i=0; $i < count($highlights); $i++) { 
+                            echo "<li class='mb-4' style='list-style: unset;'>$highlights[$i]</li>";
+                        }
+                    ?>
+                </ul>
             </div>
             <div class="bg-white border border-body-tertiary my-4">
                 <h3 class="ps-3 my-3 border-start border-4 border-primary fw-bold">Resort Overview</h3>
-                <p class="m-4">Description</p>
+                <ul class="mx-5">
+                    <?php
+                        $overview = explode('<--->', $overview);
+                        for ($i=0; $i < count($overview); $i++) { 
+                            echo "<li class='mb-4' style='list-style: unset;'>$overview[$i]</li>";
+                        }
+                    ?>
+                </ul>
             </div>
             <div>
                 <h3 class="ps-3 my-3 border-start border-4 border-primary fw-bold">Select Package</h3>
             </div>
             <div class="bg-white border border-body-tertiary my-4">
                 <h3 class="ps-3 my-3 border-start border-4 border-primary fw-bold">More Details about Resort</h3>
-                <p class="m-4">Description</p>
+                <ul class="mx-5">
+                    <?php
+                        $more = explode('<--->', $more);
+                        for ($i=0; $i < count($more); $i++) { 
+                            echo "<li class='mb-4' style='list-style: unset;'>$more[$i]</li>";
+                        }
+                    ?>
+                </ul>
             </div>
         </div>
         
         <div class="col-3">
-            <div class=" bg-white border border-body-tertiary my-5 px-3 py-2 rounded w-100">
-                <p class="mb-1">Starting from <del class="text-secondary">INR 12000</del></p>
+            <div class=" bg-white border border-body-tertiary mt-5 mb-4 px-3 py-2 rounded w-100 shadow">
+                <p class="mb-1">Starting from <del class="text-danger">USD <?php echo $price; ?></del></p>
                 <div class="d-flex flex-row align-item-center">
                     <div>
-                        <h2 class="text-primary m-0">INR 9,500</h2>
+                        <h2 class="text-primary m-0">USD <?php echo ($price - $price*($discount/100)); ?></h2>
                         <p class="text-primary text-center m-0">Per Room</p>
                     </div>
                     <div class="m-3 bg-info bg-opacity-50 py-1 px-2 text-primary rounded">
-                        2% Off
+                        <?php echo $discount; ?>% Off
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary w-100 mt-3">Book Now</button>
+                <button onclick='openName(<?php echo $login; ?>)' type="button" class="btn btn-primary w-100 mt-3">Book Now</button>
+            </div>
+
+            <div class=" bg-white border border-body-tertiary my-4 px-3 py-3 rounded w-100">
+                <h6>Got a Question?</h6>
+                <hr class="my-2">
+                <p class="p-2" style="font-size:15px;">Our Destination expert will be happy to help you resolve your queries for this tour.</p>
+                <p class="px-2 fw-bold" style="font-size:15px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-primary bi bi-telephone-forward me-2" viewBox="0 0 16 16">
+                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zm10.762.135a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L14.293 4H9.5a.5.5 0 0 1 0-1h4.793l-1.647-1.646a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    <?php echo $contact_info; ?>
+                </p>
+                <p class="px-2 text-center" style="font-size:15px;">
+                    10:30 AM - 8:00 PM (Mon to Sat)
+                </p>
             </div>
         </div>
     </div>
-
-    <!-- <div class="row justify-content-center ">
-        <div class="col-md-6" style="background-color:darkred">
-            <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-                <h2 style="color: #f74413;
-                font-family: ralewaybold;">About The Hotel</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nesciunt ducimus, reiciendis vitae
-                    natus omnis sed distinctio facere doloribus nemo fugit laborum pariatur quidem adipisci molestiae autem
-                    minima magnam tempora! Facilis illum quidem error minus!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo ullam labore placeat quidem! Numquam eius
-                    tempora excepturi maiores, quos odit nisi eos laborum ut consequuntur explicabo repellat et suscipit
-                    ipsa quia nesciunt veniam reiciendis illo!
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> Quo deleniti vitae molestias odit
-                    dignissimos ipsum sed voluptas sunt. Recusandae inventore quam officia pariatur repellat eos officiis,
-                    nulla, tempora veniam nemo distinctio, iusto adipisci odit repudiandae.</p>
-
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-                add card heare
-            </div>
-        </div>
-    </div> -->
-
-
-
     
 
     <div class="album py-5 bg-body-tertiary">
@@ -167,7 +231,7 @@
                     <div class="card sug-card shadow-sm">
                         <img src="./Partials/Booking_page_css/Hotel1/room3.jpg" alt="">
                         <div class="card-body">
-                            <h4 class="card-text">Suporior Room</h4>
+                            <h4 class="card-text">Superior Room</h4>
                             <p>⭐⭐⭐⭐⭐</p>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid quisquam illo iste!</p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -185,7 +249,7 @@
                     <div class="card sug-card shadow-sm">
                         <img src="./Partials/Booking_page_css/Hotel1/room2.jpg" alt="">
                         <div class="card-body">
-                            <h4 class="card-text">Suporior Room</h4>
+                            <h4 class="card-text">Soperior Room</h4>
                             <p>⭐⭐⭐⭐⭐</p>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid quisquam illo iste!</p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -203,7 +267,7 @@
                     <div class="card sug-card shadow-sm">
                         <img src="./Partials/Booking_page_css/Hotel1/room1.jpg" alt="">
                         <div class="card-body">
-                            <h4 class="card-text">Suporior Room</h4>
+                            <h4 class="card-text">Soperior Room</h4>
                             <p>⭐⭐⭐⭐⭐</p>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid quisquam illo iste!</p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -220,6 +284,47 @@
             </div>
         </div>
     </div>
+    <?php require "./Partials/footer.php" ?>
+    <div class="position-fixed top-0 start-0 update" id="nameCh"> </div>
 </body>
+<script>
+    let update = document.getElementById("nameCh");
+    update.style.display = "none";
+    
+    function closeName() {
+        update.style.display = "none";
+    }
 
+    let openName = (field) => {
+        if (field) {
+            
+            update.style.display = "block";
+            update.innerHTML = `<div class="boxi bg-light rounded position-absolute top-50 start-50 translate-middle">
+            <div class="d-flex w-100 justify-content-end pt-2 pe-2">
+            <svg xmlns="http://www.w3.org/2000/svg" onclick="closeName()" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" style="cursor: pointer;">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+            </div>
+                <form class="p-4 pt-0 d-flex flex-column formBox" style="min-width: 300px;" method="post" action="./booking.php?id=<?php echo $rid;?>">    
+                    <div class="mb-2 d-flex flex-column justify-content-between">
+                    <label>Name</label>
+                    <input type="text" name="name" class="mt-1 mb-3">
+                    <label>Mobile No.</label>
+                    <input type="number" name="mobile" class="mt-1 mb-3">
+                    <label>Number of persons</label>
+                    <input type="number" name="person" class="mt-1 mb-3">
+                    <label>Check in date</label>
+                    <input type="date" name="checkIn" class="mt-1 mb-3">
+                    <label>Check out date</label>
+                    <input type="date" name="checkOut" class="mt-1 mb-3">
+                    <button type="submit" class=" btn btn-primary col-8 my-2" style="max-width:200px;">Book</button>
+                    </div>
+                </form>
+            </div>`;
+        }
+        else{
+            <?php echo "window.location.href='http://localhost/WT-Project/login.php'";?>
+        }
+    }
+</script>
 </html>

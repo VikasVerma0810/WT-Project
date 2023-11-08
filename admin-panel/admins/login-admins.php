@@ -27,9 +27,15 @@
 
           $fetch = $login->fetch(PDO::FETCH_ASSOC);
 
+          $listing = 1;
+          $manager = $conn->query("SELECT * FROM managers WHERE email='$email' and listing=$listing");
+          $manager->execute();
+
+          $managersCount = $manager->fetch(PDO::FETCH_ASSOC);
+
           //validate email
 
-          if($login->rowCount() > 0) {
+          if($login->rowCount() > 0 || $manager->rowCount() > 0) {
 
             //validate pass
 
@@ -38,20 +44,32 @@
               $_SESSION['adminname'] = $fetch['adminname'];
               $_SESSION['email'] = $fetch['email'];
               $_SESSION['admin_id'] = $fetch['id'];
-
+              $_SESSION['admin'] = true;
 
               echo "<script> window.location.href='".ADMINURL."'; </script>";
 
-            } else {
-              
-              echo "<script>alert('email or password is wrong')</script>";
+            } 
+            else {
+              if (password_verify($password, $managersCount['password']))  {
+                $_SESSION['managername'] = $managersCount['name'];
+                $_SESSION['email'] = $managersCount['email'];
+                $_SESSION['manager_id'] = $managersCount['id'];
+                $_SESSION['manager'] = true;
+                echo "<script> window.location.href='".ADMINURL."'; </script>";
+              }
+              else{
+                echo "<script>alert('email or password is wrong')</script>";
+              }
 
             }
 
-          } else {
-              echo "<script>alert('email or password is wrong')</script>";
+          }
+          else {
+              echo "<script>alert('No user exists')</script>";
 
           }
+
+          
 
       }
   }

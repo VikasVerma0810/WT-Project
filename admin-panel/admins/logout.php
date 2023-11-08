@@ -4,4 +4,4 @@
     session_unset();
     session_destroy();
 
-    echo "<script> window.location.href='http://localhost/FitnessFestive/admin-panel/admins/login-admins.php'; </script>";
+    echo "<script> window.location.href='http://localhost/WT-Project/admin-panel/admins/login-admins.php'; </script>";

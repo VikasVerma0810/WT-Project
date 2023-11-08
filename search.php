@@ -43,7 +43,7 @@
             <?php
                 $count = 0;
                 $queryArray = [];
-                $sqlResorts = "select * from resortinfo";
+                $sqlResorts = "select * from resortinfo where listing = '1'";
                 if (isset($_GET['amenities'])) {
                     $Amens = $_GET['amenities'];
                     $resultAmen = explode(',', $Amens);
@@ -69,7 +69,6 @@
                 }
                 if (isset($_GET['location'])) {
                     $location = $_GET['location'];
-                    echo $location;
                     $resultloca = explode('.', $location);
                     for ($i=0; $i < count($resultloca); $i++) { 
                         $queryArray[$count] = " location like '%".$resultloca[$i]."%'";
@@ -85,7 +84,7 @@
                     }
                     $whereClauses .= $queryArray[$count - 1];
                     $sqlResorts .= $whereClauses;
-                    echo $sqlResorts;
+                    // echo $sqlResorts;
                 }
 
                 $result = mysqli_query($conn, $sqlResorts);
@@ -94,7 +93,7 @@
                     $row = mysqli_fetch_assoc($result);
                     $id = $row['id'];
                     $name = $row['Name'];
-                    $desc = $row['description'];
+                    $desc = $row['room_types'];
                     $img = $row['poster'];
                     $price = $row['price'];
                     $location = $row['location'];
@@ -178,8 +177,8 @@
                                     </div>
                                 </div>
                                 <div class="my-3">
-                                    <del class="text-danger">₹ '.$price.'</del>
-                                    <p class="fs-4 m-0">₹ '.($price - $price*($discount/100)).'</p>
+                                    <del class="text-danger">$ '.$price.'</del>
+                                    <p class="fs-4 m-0">$ '.($price - $price*($discount/100)).'</p>
                                     <p class="text-secondary m-0">Per room</p>
                                 </div>
                                 <a href="./booking.php?id='.$id.'" class="btn btn-primary w-100">See Availibility &gt;</a>

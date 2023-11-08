@@ -1,6 +1,6 @@
 <?php
     echo '<div class=" bg_color bg-black">
-    <div class="container">
+    <div class="container" id="footer">
         <footer class="py-5">
             <div class="d-flex justify-content-between flex-wrap align-items-center">
                 <div class="col-6 col-md-2 mb-3">

@@ -3,29 +3,27 @@
 <?php 
 
 
-  if(!isset($_SESSION['adminname'])) {
-        
+  if(!isset($_SESSION['adminname']) && !isset($_SESSION['managername'])) {
     echo "<script> window.location.href='".ADMINURL."/admins/login-admins.php'; </script>";
 
   }
 
-  //products
+  //resorts
   $resortinfo = $conn->query("SELECT COUNT(*) as resortinfo_num FROM resortinfo");
+  if (isset($_SESSION['managername'])) {
+    $mid = $_SESSION['manager_id'];
+    $resortinfo = $conn->query("SELECT COUNT(*) as resortinfo_num FROM resortinfo where mid=$mid");
+  }
   $resortinfo->execute();
 
   $num_resortinfo = $resortinfo->fetch(PDO::FETCH_OBJ);
 
-  //orders
-  // $resort_info = $conn->query("SELECT COUNT(*) as resort_num FROM resort_info");
-  // $resort_info->execute();
 
-  // $num_resort_info = $resort_info->fetch(PDO::FETCH_OBJ);
+  //managers
+  $managersinfo = $conn->query("SELECT COUNT(*) as managersinfo_num FROM managers");
+  $managersinfo->execute();
 
-  //categories
-  // $gallery = $conn->query("SELECT COUNT(*) as gallery_num FROM gallery");
-  // $gallery->execute();
-
-  // $num_gallery = $gallery->fetch(PDO::FETCH_OBJ);
+  $num_managersinfo = $managersinfo->fetch(PDO::FETCH_OBJ);
 
   //admins
   $admins = $conn->query("SELECT COUNT(*) as admins_num FROM admin");
@@ -43,22 +41,17 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Announcements</h5>
-              <p class="card-text">number of announcements: <?php echo $num_announce->announce_num; ?></p>
-            </div>
-          </div>
-        </div>
+
+        <?php if(isset($_SESSION['adminname'])) : ?>
         <div class="col-md-3">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Gallery</h5>
-              <p class="card-text">Gallery images: <?php echo  $num_gallery->gallery_num; ?></p>
+              <h5 class="card-title">Managers</h5>
+              <p class="card-text">number of timeline: <?php echo $num_managersinfo->managersinfo_num; ?></p>
             </div>
           </div>
-        </div> -->
+        </div>
+        
         <div class="col-md-3">
           <div class="card">
             <div class="card-body">
@@ -67,6 +60,7 @@
             </div>
           </div>
         </div>
+        <?php endif; ?>
       </div>
     </div>
 <?php require "layouts/footer.php"; ?>

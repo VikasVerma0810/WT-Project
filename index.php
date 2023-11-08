@@ -18,17 +18,15 @@
             <div class="carousel-item active ">
                 <img alt="..." class="d-block w-100" src="./Partials/img/banner/banner.png">
                 <div class="carousel-caption">
-                    <h5 class="animated bounceInRight fs-1" style="animation-delay: 1s">Web Design</h5>
-                    <p class="animated bounceInLeft" style="animation-delay: 2s">Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
+                    <h5 class="animated bounceInRight fs-1" style="animation-delay: 1s">Create Unforgettable Moments</h5>
+                    <p class="animated bounceInLeft" style="animation-delay: 2s">"Experience unparalleled luxury in our well-appointed suites and villas. Every room is designed for your relaxation and features stunning views of our tropical paradise."</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img alt="..." class="d-block w-100" src="./Partials/img/banner/banner2.png">
                 <div class="carousel-caption">
-                    <h5 class="animated bounceInRight fs-1" style="animation-delay: 1s">Web Design</h5>
-                    <p class="animated bounceInLeft" style="animation-delay: 2s">Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
+                    <h5 class="animated bounceInRight fs-1" style="animation-delay: 1s">Adventure Awaits</h5>
+                    <p class="animated bounceInLeft" style="animation-delay: 2s">"Host your dream wedding or special event in our stunning venues. Our dedicated team will make your occasion truly magical."</p>
                 </div>
             </div>
         </div>
@@ -53,10 +51,8 @@
                             <h3 class="about_info">A Luxuries Hotel <br>
                                 with Nature</h3>
                         </div>
-                        <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare
-                            dapibus enim ut tincidunt rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque
-                            sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et. Rhoncus.</p>
-                        <a href="#" class="line-button">Learn More</a>
+                        <p>We take pride in offering the highest standards of service and comfort. Our well-appointed accommodations provide a haven of luxury, each with its unique charm and breathtaking views. Immerse yourself in the serenity of our gardens, savor the flavors of our exquisite cuisine, and indulge in relaxation at our spa and wellness center.</p>
+                    
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7">
@@ -96,7 +92,7 @@
                             <li>3 Adults & 2 Children size</li>
                             <li>Sea view side</li>
                         </ul>
-                        <a href="#" class="book_now w-100 py-2">book now</a>
+                        <a href="./search.php" class="book_now w-100 py-2">book now</a>
                     </div>
                 </div>
                 <div class="single_offers border border-2 border-primary p-4 mt-4">
@@ -111,7 +107,7 @@
                             <li>3 Adults & 2 Children size</li>
                             <li>Sea view side</li>
                         </ul>
-                        <a href="#" class="book_now w-100 py-2">book now</a>
+                        <a href="./search.php" class="book_now w-100 py-2">book now</a>
                     </div>
                 </div>
                 <div class="single_offers border border-2 border-primary p-4 mt-4">
@@ -126,7 +122,7 @@
                             <li>3 Adults & 2 Children size</li>
                             <li>Sea view side</li>
                         </ul>
-                        <a href="#" class="book_now w-100 py-2">book now</a>
+                        <a href="./search.php" class="book_now w-100 py-2">book now</a>
                     </div>
                 </div>
             </div>
@@ -156,10 +152,8 @@
                             <h3 class="about_info">We Serve Fresh and<br>
                                 Delicious Food</h3>
                         </div>
-                        <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare
-                            dapibus enim ut tincidunt rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque
-                            sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et. Rhoncus.</p>
-                        <a href="#" class="line-button">Learn More</a>
+                        <p>Experience an exquisite culinary journey at our resort, where our culinary team creates masterpieces from fresh, locally sourced ingredients and international delicacies, all against a backdrop of breathtaking views. From romantic beachfront dinners to personalized menus for special occasions, we're dedicated to making your dining experience as memorable as your stay.</p>
+                       
                     </div>
                 </div>
                
